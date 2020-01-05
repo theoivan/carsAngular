@@ -1,0 +1,18 @@
+.car-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em;
+    border-bottom: 1px solid #d9dad9;
+}
+.car-details > div {
+    display: flex;
+    align-items: center;
+}
+.car-details > div img {
+    margin-right: 14px;
+}
+
+.btn{
+    margin: 5px;
+}

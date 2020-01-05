@@ -1,0 +1,58 @@
+<h1 align="center">  Register </h1>
+
+<form #form="ngForm" *ngIf="registerCredentials" (submit)="register()">
+    <div class="form-group">
+        <h3>Username: </h3>
+        <input name="username" #username="ngModel" [(ngModel)]="registerCredentials.username" class="form-control"
+            type="text" minlength="6" pInputText required>
+        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+            <div *ngIf="username.errors.required">
+                Username is required.
+            </div>
+            <div *ngIf="username.errors.minlength">
+                Username be at least 6 characters long.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <h3>Email: </h3>
+        <input name="email" #email="ngModel" [(ngModel)]="registerCredentials.email" class="form-control" type="email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" pInputText required>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+            <div *ngIf="email.errors.required">
+                Email is required.
+            </div>
+            <div *ngIf="email.invalid">
+                Email is invalid.
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <h3>Password: </h3>
+        <input name="password" #password="ngModel" [(ngModel)]="registerCredentials.password" class="form-control"
+            type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" minlength="6" pInputText required>
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+            <div *ngIf="password.errors.required">
+                Password is required.
+            </div>
+            <div *ngIf="password.invalid">
+                Password must contains at least one uppercase, one lowercase and one number.
+            </div>
+            <div *ngIf="password.errors.minlength">
+                Password be at least 6 characters long.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button pbutton class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">
+            <i class="fas fa-database"></i> Register
+        </button>
+        <button pbutton class="btn btn-danger btn-lg btn-block" type="button" (click)="resetForm()">
+            <i class="fas fa-database"></i> Reset
+        </button>
+    </div>
+
+</form>
+
+<p-toast [style]="{marginTop: '80px'}"></p-toast>

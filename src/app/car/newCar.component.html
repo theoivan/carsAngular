@@ -1,0 +1,196 @@
+<form #form="ngForm" autocomplete="off" (submit)="addCar()" *ngIf="car">
+    <div class="form-group" style="height:30px;">
+        <h4 style="float:left;">Add a new car</h4>
+        <button pButton style="float:right;" type="submit" label="Add" [disabled]="form.invalid"
+            icon="pi pi-plus-circle"></button>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+
+            <div class="form-group">
+                <h4>Brand</h4>
+                <input name="brand" #brand="ngModel" [(ngModel)]="car.brand" class="form-control" type="text" pInputText
+                    required>
+                <div *ngIf="brand.invalid && (brand.dirty || brand.touched)" class="alert alert-danger">
+                    <div *ngIf="brand.errors.required">
+                        Brand is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>Model</h4>
+                <input name="model" #model="ngModel" [(ngModel)]="car.model" class="form-control" type="text" pInputText
+                    required>
+                <div *ngIf="model.invalid && (model.dirty || model.touched)" class="alert alert-danger">
+                    <div *ngIf="model.errors.required">
+                        Model is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>Registration Number</h4>
+                <input name="registrationNumber" #registrationNumber="ngModel" [(ngModel)]="car.registrationNumber"
+                    class="form-control" type="text" pInputText required>
+                <div *ngIf="registrationNumber.invalid && (registrationNumber.dirty || registrationNumber.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="registrationNumber.errors.required">
+                        Registration number is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>Combustible</h4>
+                <input name="combustible" #combustible="ngModel" [(ngModel)]="car.combustible" class="form-control"
+                    type="text" pInputText required>
+                <div *ngIf="combustible.invalid && (combustible.dirty || combustible.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="combustible.errors.required">
+                        Combustible is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>First registration date</h4>
+                <p-calendar name="firstRegistrationDate" [(ngModel)]="firstRegistrationDate" [showIcon]="true"
+                    [readonlyInput]="true" dateFormat="dd.mm.yy" [disabledDays]="[0,6]" [inputStyleClass]="form-control"
+                    [style]="{'width':'100%'}" [inputStyle]="{'width':'93%'}">
+                </p-calendar>
+
+
+            </div>
+
+            <div class="form-group">
+                <h4>Transmission</h4>
+                <input name="transmission" #transmission="ngModel" [(ngModel)]="car.transmission" class="form-control"
+                    type="text" pInputText required>
+                <div *ngIf="transmission.invalid && (transmission.dirty || transmission.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="transmission.errors.required">
+                        Transmission is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <h4>Origin country</h4>
+                <input name="originCountry" #originCountry="ngModel" [(ngModel)]="car.originCountry"
+                    class="form-control" type="text" pInputText required>
+                <div *ngIf="originCountry.invalid && (originCountry.dirty || originCountry.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="originCountry.errors.required">
+                        Origin country is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>Emission standard</h4>
+                <input name="emissionStandard" #emissionStandard="ngModel" [(ngModel)]="car.emissionStandard"
+                    class="form-control" type="text" pInputText required>
+                <div *ngIf="emissionStandard.invalid && (emissionStandard.dirty || emissionStandard.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="emissionStandard.errors.required">
+                        Emission standard is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4>Colour</h4>
+                <input name="colour" #colour="ngModel" [(ngModel)]="car.colour" class="form-control" type="text"
+                    pInputText required>
+                <div *ngIf="colour.invalid && (colour.dirty || colour.touched)" class="alert alert-danger">
+                    <div *ngIf="colour.errors.required">
+                        Colour is required.
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <h4>Body type</h4>
+                <input name="bodyType" #bodyType="ngModel" [(ngModel)]="car.bodyType" class="form-control" type="text"
+                    pInputText required>
+                <div *ngIf="bodyType.invalid && (bodyType.dirty || bodyType.touched)" class="alert alert-danger">
+                    <div *ngIf="bodyType.errors.required">
+                        Body type is required.
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <h4>Number of doors</h4>
+                        <p-spinner name="numberOfDoors" #numberOfDoors="ngModel" [(ngModel)]="car.numberOfDoors"
+                            [min]="0" [step]="1" required>
+                        </p-spinner>
+                        <div *ngIf="numberOfDoors.invalid && (numberOfDoors.dirty || numberOfDoors.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="numberOfDoors.errors.required">
+                                Number of doors is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <h4>Number of seats</h4>
+                        <p-spinner name="numberOfSeats" #numberOfSeats="ngModel" [(ngModel)]="car.numberOfSeats"
+                            [min]="0" [step]="1" required>
+                        </p-spinner>
+                        <div *ngIf="numberOfSeats.invalid && (numberOfSeats.dirty || numberOfSeats.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="numberOfSeats.errors.required">
+                                Number of seats is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <h4>Engine size</h4>
+                        <p-spinner name="engineSize" #engineSize="ngModel" [(ngModel)]="car.engineSize" [min]="0"
+                            [step]="1" [inputStyle]="{'width':'100%'}" required>
+                        </p-spinner>
+                        <div *ngIf="engineSize.invalid && (engineSize.dirty || engineSize.touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="engineSize.errors.required">
+                                Engine size is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <h4>Power</h4>
+                        <p-spinner name="power" #power="ngModel" [(ngModel)]="car.power" [min]="0" [step]="1" required>
+                        </p-spinner>
+                        <div *ngIf="power.invalid && (power.dirty || power.touched)" class="alert alert-danger">
+                            <div *ngIf="power.errors.required">
+                                Power is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<h4 style="background-color:#808080;" align="center"> <i class="pi pi-exclamation-circle"></i> YOU WILL BE ABLE TO ADD
+    AN IMAGE AFTER THE CAR WILL BE
+    CREATED <i class="pi pi-exclamation-circle"></i> </h4>
+
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
