@@ -6,13 +6,12 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class NavMenuService {
-    readonly rootURL = 'https://localhost:44341/';
+    readonly rootURL = 'https://localhost:5001/';
 
     constructor(private http: HttpClient) { }
 
     getLogoPath() {
-        console.log(localStorage);
-        const path = 'Resources/Images/logo.jpg';
+        const path = 'Resources/Images/logo.png';
         return this.rootURL + path;
       }
 

@@ -8,7 +8,7 @@ import { LoginCredentials } from '../models/loginCredentials.model';
 })
 
 export class UserService {
-    readonly rootURL = 'https://localhost:44341/user/';
+    readonly rootURL = 'https://localhost:5001/user/';
 
     constructor(private http: HttpClient) { }
 

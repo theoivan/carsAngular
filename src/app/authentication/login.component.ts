@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
                 localStorage.setItem('jwt', token);
                 localStorage.setItem('userId', userId);
                 localStorage.setItem('role', role);
-                console.log(localStorage);
                 this.router.navigate(['/cars']);
             },
             err => {

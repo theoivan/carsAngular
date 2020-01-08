@@ -1,10 +1,10 @@
-<p-dataView #dv [value]="cars" [paginator]="true" [rows]="20" paginatorPosition="both" filterBy="brand">
+<p-dataView #dv [value]="cars" [paginator]="true" [rows]="20" paginatorPosition="both" filterBy="brand,model">
     <p-header>
         <div class="ui-helper-clearfix">
             <div class="ui-g">
                 <div class="ui-g-12 ui-md-12 filter-container" style="text-align:center;">
-                    <input type="search" pInputText placeholder="Search by brand"
-                        (keyup)="dv.filter($event.target.value)" style="margin: 0 auto;">
+                    <input type="search" pInputText placeholder="Search by brand or model"
+                        (keyup)="dv.filter($event.target.value)" style="margin: 0 auto; width:50%;">
                 </div>
             </div>
         </div>
@@ -13,7 +13,7 @@
         <div class="ui-g-12">
             <div class="car-details">
                 <div>
-                    <img src="{{rootUrl}}{{car.imagePath}}" style="width:240px;height:120px;">
+                    <img src="{{rootUrl}}{{car.imagePath}}" style="width:30%;height:100%;">
                     <div class="ui-g">
                         <div class="ui-g-12">Brand: <b>{{car.brand}}</b></div>
                         <div class="ui-g-12">Model: <b>{{car.model}}</b></div>

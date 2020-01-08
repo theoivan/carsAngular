@@ -40,8 +40,8 @@ export class RegisterComponent implements OnInit {
                     result => {
                         this.resetForm();
                         const token = (result as any).token;
-                        const userId = (res as any).id;
-                        const role = (res as any).role;
+                        const userId = (result as any).id;
+                        const role = (result as any).role;
                         localStorage.setItem('jwt', token);
                         localStorage.setItem('userId', userId);
                         localStorage.setItem('role', role);
