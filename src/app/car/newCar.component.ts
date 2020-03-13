@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
-import { MessageService } from 'primeng/api';
+import { MessageService, SelectItem } from 'primeng/api';
 import { CarService } from '../services/car.service';
 import { Car } from '../models/car.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InfrastructureService } from '../services/infrastructure.service';
+import { Country } from '../models/country.model';
 
 @Component({
     templateUrl: './newCar.component.html',
@@ -15,15 +17,40 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class NewCarComponent implements OnInit {
-    constructor(private carService: CarService, private messageService: MessageService, private route: ActivatedRoute,
+    constructor(private carService: CarService, private messageService: MessageService, private infrastructureService: InfrastructureService, private route: ActivatedRoute,
                 private router: Router) { }
 
     private sub: any;
     car: Car = new Car();
     firstRegistrationDate: Date = new Date();
+    maxDate: Date;
+    countries: SelectItem[];
+    transmissionTypes: SelectItem[];
+    fuelTypes: SelectItem[];
+    emissionStandards: SelectItem[];
 
     ngOnInit() {
+        this.maxDate = new Date();
+        this.getCountries();
+        this.getEmissionStandards();
+        this.getFuelTypes();
+        this.getTransmissionTypes();
+    }
 
+    getCountries() {
+        this.infrastructureService.getAllCountries().then(countries => this.countries = countries);
+    }
+
+    getFuelTypes() {
+        this.infrastructureService.getAllFuelTypes().then(fuelTypes => this.fuelTypes = fuelTypes);
+    }
+
+    getEmissionStandards() {
+        this.infrastructureService.getAllEmissionStandards().then(emissionStandards => this.emissionStandards = emissionStandards);
+    }
+
+    getTransmissionTypes() {
+        this.infrastructureService.getAllTransmissionTypes().then(transmissionTypes => this.transmissionTypes = transmissionTypes);
     }
 
     addCar() {

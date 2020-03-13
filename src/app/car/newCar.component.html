@@ -3,6 +3,7 @@
         <h4 style="float:left;">Add a new car</h4>
         <button pButton style="float:right;" type="submit" label="Add" [disabled]="form.invalid"
             icon="pi pi-plus-circle"></button>
+
     </div>
 
     <div class="row">
@@ -42,76 +43,42 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group"  *ngIf="transmissionTypes">
                 <h4>Combustible</h4>
-                <input name="combustible" #combustible="ngModel" [(ngModel)]="car.combustible" class="form-control"
-                    type="text" pInputText required>
-                <div *ngIf="combustible.invalid && (combustible.dirty || combustible.touched)"
-                    class="alert alert-danger">
-                    <div *ngIf="combustible.errors.required">
-                        Combustible is required.
-                    </div>
-                </div>
+                <p-dropdown [options]="fuelTypes" name="combustible" [(ngModel)]="car.combustible" [filter]="true"
+                placeholder="Select fuel" required [style]="{'width':'100%'}">
+            </p-dropdown>
             </div>
 
             <div class="form-group">
                 <h4>First registration date</h4>
                 <p-calendar name="firstRegistrationDate" [(ngModel)]="firstRegistrationDate" [showIcon]="true"
                     [readonlyInput]="true" dateFormat="dd.mm.yy" [disabledDays]="[0,6]" [inputStyleClass]="form-control"
-                    [style]="{'width':'100%'}" [inputStyle]="{'width':'93%'}">
+                    [style]="{'width':'100%'}" [inputStyle]="{'width':'93%'}" [maxDate]="maxDate">
                 </p-calendar>
-
-
             </div>
 
-            <div class="form-group">
+            <div class="form-group"  *ngIf="transmissionTypes">
                 <h4>Transmission</h4>
-                <input name="transmission" #transmission="ngModel" [(ngModel)]="car.transmission" class="form-control"
-                    type="text" pInputText required>
-                <div *ngIf="transmission.invalid && (transmission.dirty || transmission.touched)"
-                    class="alert alert-danger">
-                    <div *ngIf="transmission.errors.required">
-                        Transmission is required.
-                    </div>
-                </div>
+                <p-dropdown [options]="transmissionTypes" name="transmissionType" [(ngModel)]="car.transmission" [filter]="true"
+                    placeholder="Select transmission" required [style]="{'width':'100%'}">
+                </p-dropdown>
             </div>
         </div>
         <div class="col-sm-6">
-            <div class="form-group">
+            <div class="form-group" *ngIf="countries">
                 <h4>Origin country</h4>
-                <input name="originCountry" #originCountry="ngModel" [(ngModel)]="car.originCountry"
-                    class="form-control" type="text" pInputText required>
-                <div *ngIf="originCountry.invalid && (originCountry.dirty || originCountry.touched)"
-                    class="alert alert-danger">
-                    <div *ngIf="originCountry.errors.required">
-                        Origin country is required.
-                    </div>
-                </div>
+                <p-dropdown [options]="countries" name="country" [(ngModel)]="car.originCountry" [filter]="true"
+                    placeholder="Select a country" required [style]="{'width':'100%'}">
+                </p-dropdown>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" *ngIf="emissionStandards">
                 <h4>Emission standard</h4>
-                <input name="emissionStandard" #emissionStandard="ngModel" [(ngModel)]="car.emissionStandard"
-                    class="form-control" type="text" pInputText required>
-                <div *ngIf="emissionStandard.invalid && (emissionStandard.dirty || emissionStandard.touched)"
-                    class="alert alert-danger">
-                    <div *ngIf="emissionStandard.errors.required">
-                        Emission standard is required.
-                    </div>
-                </div>
+                <p-dropdown [options]="emissionStandards" name="emissionStandard" [(ngModel)]="car.emissionStandard" [filter]="true"
+                    placeholder="Select emission standard" required [style]="{'width':'100%'}">
+                </p-dropdown>
             </div>
-
-            <div class="form-group">
-                <h4>Colour</h4>
-                <input name="colour" #colour="ngModel" [(ngModel)]="car.colour" class="form-control" type="text"
-                    pInputText required>
-                <div *ngIf="colour.invalid && (colour.dirty || colour.touched)" class="alert alert-danger">
-                    <div *ngIf="colour.errors.required">
-                        Colour is required.
-                    </div>
-                </div>
-            </div>
-
 
             <div class="form-group">
                 <h4>Body type</h4>
@@ -184,6 +151,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="form-group">
+                <h4>Colour</h4>
+                <p-colorPicker [(ngModel)]="car.colour" name="color" [style]="{'width': '100%'}" ></p-colorPicker>
             </div>
         </div>
     </div>

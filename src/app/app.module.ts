@@ -6,6 +6,7 @@ import { DataViewModule } from 'primeng/dataview';
 import { CalendarModule } from 'primeng/calendar';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ColorPickerModule } from 'primeng/colorpicker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { RegisterComponent } from './authentication/register.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
+import { DropdownModule } from 'primeng/dropdown';
 import { SpinnerModule } from 'primeng/spinner';
 import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -48,7 +50,9 @@ export function tokenGetter() {
     ConfirmDialogModule,
     SpinnerModule,
     ButtonModule,
+    DropdownModule,
     FileUploadModule,
+    ColorPickerModule,
     BrowserAnimationsModule,
     ToastModule,
     RouterModule.forRoot([

@@ -22,7 +22,7 @@
                 <div *ngIf="password.errors.required">
                     Password is required.
                 </div>
-                <div *ngIf="password.invalid">
+                <div *ngIf="password.invalid && !password.errors.required">
                     Password must contains at least one uppercase, one lowercase and one number.
                 </div>
                 <div *ngIf="password.errors.minlength">
